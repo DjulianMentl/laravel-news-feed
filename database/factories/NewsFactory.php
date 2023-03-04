@@ -25,7 +25,7 @@ class NewsFactory extends Factory
             'preview' => $this->faker->realText(100),
             'text' => $this->faker->realText(500),
             'counter' => 0,
-            'data' => now(),
+            'date' => now(),
             'image' => $img,
         ];
     }

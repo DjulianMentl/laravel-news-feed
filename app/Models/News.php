@@ -14,7 +14,7 @@ use Illuminate\Support\Carbon;
  * @property mixed|string $text
  * @property mixed|string $image
  * @property mixed|int $counter
- * @property mixed|Carbon $data
+ * @property mixed|Carbon $date
  * @method static findOrFail(int $id)
  */
 class News extends Model
@@ -30,7 +30,7 @@ class News extends Model
         'preview',
         'text',
         'counter',
-        'data',
+        'date',
         'image',
     ];
 

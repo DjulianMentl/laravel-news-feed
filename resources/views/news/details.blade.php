@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<h1>{{ $news->data }} — {{ $news->title }}</h1>
+<h1>{{ $news->date }} — {{ $news->title }}</h1>
 @if($news->image !== null)
     <div><img src="{{ $news->image }}" alt="Картинка новости"></div>
 @endif

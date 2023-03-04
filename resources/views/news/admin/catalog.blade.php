@@ -14,7 +14,7 @@
 <h1>Список новостей ADMIN</h1>
 <div>
     @foreach($newsList as $news)
-        <a href="{{ route('news.show', ['news' => $news->id]) }}"><h3>{{ $news->data }} — {{ $news->title }}</h3></a>
+        <a href="{{ route('news.show', ['news' => $news->id]) }}"><h3>{{ $news->date }} — {{ $news->title }}</h3></a>
         <div>{{ $news->preview }}</div>
         <hr>
     @endforeach

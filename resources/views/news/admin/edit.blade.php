@@ -24,19 +24,18 @@
 
     <div>
         <form method="POST" action="{{ route('news.update',  ['news' => $news->id]) }}" enctype="multipart/form-data">
+            @csrf
             <div>
                 <label for="title">Заголовок</label>
-                <p><input type="text" id="title" name="title" value="{{ $news->title }}"></p>
+                <p><textarea id="title" name="title" rows="2" cols="50">{{ $news->title }}</textarea></p>
             </div>
             <div>
                 <label for="preview">Анонс новости</label>
-                <p><input type="text" style="width: 400px; height: 200px;" id="preview" name="preview" value="{{ $news->preview }}"></p>
-
+                <p><textarea id="preview" name="preview" rows="10" cols="50">{{ $news->preview }}</textarea></p>
             </div>
             <div>
                 <label for="text">Текст новости</label>
-                <p><input type="text" style="width: 400px; height: 200px;" id="text" name="text" value="{{ $news->text }}"></p>
-
+                <p><textarea id="text" name="text" rows="20" cols="50">{{ $news->text }}</textarea></p>
             </div>
             <div>
                 <input type="file" accept="image/jpeg,image/gif" name="image">
@@ -49,7 +48,7 @@
 
     <div>
         <form action="{{ route('news.destroy', ['news' => $news->id]) }}">
-
+            @csrf
             <input name="_method" type="hidden" value="DELETE">
 
             <input type="submit" value="Удалить" />

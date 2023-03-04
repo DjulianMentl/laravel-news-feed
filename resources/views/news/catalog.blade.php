@@ -15,8 +15,11 @@
 <body>
 <h1>Список новостей</h1>
 <div>
+    <p>Время добавления последней новости: {{ $lastNews->date }}</p>
+</div>
+<div>
     @foreach($newsList as $news)
-        <a href="{{ route('show-news', ['id' => $news->id]) }}"><h3>{{ $news->data }} — {{ $news->title }}</h3></a>
+        <a href="{{ route('show-news', ['id' => $news->id]) }}"><h3>{{ $news->date }} — {{ $news->title }}</h3></a>
         <din>{{ $news->preview }}</din>
         <hr>
     @endforeach

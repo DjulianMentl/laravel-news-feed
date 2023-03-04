@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\DTO\NewsData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsRequest;
-use App\Models\News;
 use App\Services\NewsServiceInterface;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class NewsController extends Controller

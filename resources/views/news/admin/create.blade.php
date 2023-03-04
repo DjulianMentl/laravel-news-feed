@@ -24,18 +24,19 @@
 
 <div>
     <form method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data">
+        @csrf
         <div>
             <label for="title">Заголовок</label>
-            <p><input type="text" id="title" name="title"></p>
+            <p><textarea id="title" name="title" rows="2" cols="50"></textarea></p>
         </div>
         <div>
             <label for="preview">Анонс новости</label>
-            <p><input type="text" style="width: 400px; height: 200px;" id="preview" name="preview"></p>
+            <p><textarea id="preview" name="preview" rows="10" cols="50"></textarea></p>
 
         </div>
         <div>
             <label for="text">Текст новости</label>
-            <p><input type="text" style="width: 400px; height: 200px;" id="text" name="text"></p>
+            <p><textarea id="text" name="text" rows="20" cols="50"></textarea></p>
 
         </div>
         <div>

@@ -5,6 +5,8 @@ namespace App\Services;
 use App\DTO\NewsData;
 use App\Models\News;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 
 class NewsService implements NewsServiceInterface
 {
@@ -17,7 +19,7 @@ class NewsService implements NewsServiceInterface
 
     public function getAll(): Paginator
     {
-        $news = $this->news->orderBy('data', 'desc')->simplePaginate(5);
+        $news = $this->news->orderByDesc('date')->simplePaginate(5);
 
         if(is_null($news->lastItem())) {
             return abort(404);
@@ -42,11 +44,11 @@ class NewsService implements NewsServiceInterface
     public function update(NewsData $news, int $id): void
     {
         $this->news->find($id)->update([
-            'title' => $news->getTitle(),
+            'title'   => $news->getTitle(),
             'preview' => $news->getPreview(),
-            'text' => $news->getText(),
-            'data' => $news->getData(),
-            'image' => $news->getImage(),
+            'text'    => $news->getText(),
+            'date'    => $news->getDate(),
+            'image'   => $news->getImage(),
         ]);
     }
 
@@ -56,11 +58,15 @@ class NewsService implements NewsServiceInterface
         $this->news->title   = $newsData->getTitle();
         $this->news->preview = $newsData->getPreview();
         $this->news->text    = $newsData->getText();
-        $this->news->data    = $newsData->getData();
+        $this->news->date    = $newsData->getDate();
         $this->news->image   = $newsData->getImage();
 
         $this->news->save();
     }
 
+    public function getLastNewsDate(): ?News
+    {
+        return $this->news->select('date')->latest()->first();
+    }
 
 }

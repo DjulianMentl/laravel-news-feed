@@ -46,7 +46,7 @@ class NewsData
     }
 
 
-    public function getData(): Carbon
+    public function getDate(): Carbon
     {
         return $this->data;
     }
