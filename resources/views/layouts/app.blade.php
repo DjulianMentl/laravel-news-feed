@@ -10,11 +10,9 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <!-- Scripts -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}" type="text/css">
         <script src="{{ mix('js/app.js') }}"></script>
-
-        <!-- Scripts -->
-{{--        @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

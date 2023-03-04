@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Services\NewsService;
+use App\Services\NewsServiceInterface;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(NewsServiceInterface::class, NewsService::class);
     }
 
     /**

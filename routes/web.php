@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,4 +23,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/news', [NewsController::class, 'index'])->name('news-list');
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('show-news');
+
+
+Route::prefix('admin')->group(function () {
+    Route::resource('news', App\Http\Controllers\Admin\NewsController::class)
+        ->middleware('auth');
+});
 

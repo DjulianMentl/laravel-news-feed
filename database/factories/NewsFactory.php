@@ -17,12 +17,14 @@ class NewsFactory extends Factory
     public function definition()
     {
 
-        $img = '/images/img_' . ++$this->i . '.png';
+        $img = '/images/img_' . ++$this->i . '.gif';
+        sleep(1);
 
         return [
             'title' => $this->faker->realText(40),
             'preview' => $this->faker->realText(100),
             'text' => $this->faker->realText(500),
+            'counter' => 0,
             'data' => now(),
             'image' => $img,
         ];
