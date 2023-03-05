@@ -17,8 +17,6 @@ class NewsComposer
 
     public function compose(View $view): View
     {
-        return $view->with([
-            'lastNews' => $this->news->getLastNewsDate()
-        ]);
+        return $view->with('lastNews', $this->news->getLastNewsDate());
     }
 }

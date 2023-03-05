@@ -21,7 +21,9 @@ class NewsController extends Controller
 
     public function index(): Response
     {
-        $view = view('news.admin.catalog')->with(['newsList' => $this->news->getAll()]);
+        $view = view('news.admin.catalog')
+                    ->with(['title' => 'Список новостей', 'newsList' => $this->news->getAll()]);
+
         return new Response($view);
     }
 

@@ -1,36 +1,24 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main-news')
 
-    <title>{{ $news->title }}</title>
+@section('title', $news->title)
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+@section('content')
 
-    <!-- Scripts -->
-</head>
+<h1>{{ $news->date }} — {{ $news->title }}</h1>
+    @if($news->image !== null)
+        <div><img src="{{ $news->image }}" alt="Картинка новости"></div>
+    @endif
+    <div>{{ $news->text }}</div>
 
-<body>
-<h1>{{ $news->date }} — {{ $news->title }} - ADMIN</h1>
-@if($news->image !== null)
-    <div><img src="{{ $news->image }}" alt="Картинка новости"></div>
-@endif
-<div>{{ $news->text }}</div>
+    <div>
+        <a href="{{ route('news.edit', ['news' => $news->id]) }}">Редактировать</a>
+    </div>
 
-<div>
-    <a href="{{ route('news.edit', ['news' => $news->id]) }}">Редактировать</a>
-</div>
+    <form action="{{ route('news.destroy',['news' => $news->id]) }}" method="post">
 
-<form action="{{ route('news.destroy',['news' => $news->id]) }}" method="post">
+        <input name="_method" type="hidden" value="DELETE">
 
-    <input name="_method" type="hidden" value="DELETE">
-
-    <input type="submit" value="Удалить" />
-</form>
-
-</body>
-
-</html>
+        <input type="submit" value="Удалить" />
+    </form>
+@endsection
 

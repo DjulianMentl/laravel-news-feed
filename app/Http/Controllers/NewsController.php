@@ -21,7 +21,11 @@ class NewsController extends Controller
 
     public function index(): View|Factory|Application
     {
-        return view('news.catalog', ['title' => 'Список новостей', 'newsList' => $this->news->getAll()]);
+        return view('news.catalog',
+                    [
+                        'title' => 'Список новостей',
+                        'newsList' => $this->news->getAll()
+                    ]);
     }
 
     public function show(int $id): View|Factory|Application
