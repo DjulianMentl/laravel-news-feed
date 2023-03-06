@@ -29,7 +29,6 @@ class NewsRequest extends FormRequest
             'title' => ['required', 'string', 'max:255'],
             'preview' => ['required', 'string', 'max:500'],
             'text' => ['required', 'string', 'max:2000'],
-            'counter' => ['integer', 'nullable', 'max:2000'],
             'image' => ['image', 'mimes:jpg,gif', 'nullable', 'dimensions:max_width=300,max_height=300'],
         ];
     }
