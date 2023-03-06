@@ -15,6 +15,7 @@ use Illuminate\Support\Carbon;
  * @property mixed|string $image
  * @property mixed|int $counter
  * @property mixed|Carbon $date
+ * @property int $id
  * @method static findOrFail(int $id)
  */
 class News extends Model

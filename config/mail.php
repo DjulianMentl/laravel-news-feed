@@ -115,6 +115,14 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Administrator Mail Settings
+    |--------------------------------------------------------------------------
+    |
+    | Used to send notifications to the administrator.
+    |
+    */
     'administrator' => env('MAIL_ADMINISTRATOR', 'e.rindya@yandex.ru'),
 
 ];
