@@ -59,6 +59,7 @@ class NewsController extends Controller
 
     public function update(NewsRequest $request, int $id): Response
     {
+
         $validate = $request->validated();
         $this->news->update(new NewsData($validate), $id);
 

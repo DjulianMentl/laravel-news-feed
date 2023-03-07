@@ -6,12 +6,14 @@
 
     @include('news.admin.show-errors')
 
-    <div>
+    <div class="edit-news-form">
         <form method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data">
 
             @include('news.admin.form-fields')
 
-            <input type="submit" value="Сохранить" />
+            <div class="btn btn-save-news">
+                <input type="submit" value="Сохранить" />
+            </div>
         </form>
     </div>
 @endsection

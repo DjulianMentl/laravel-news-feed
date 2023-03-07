@@ -30,6 +30,8 @@ class NewsRequest extends FormRequest
             'preview' => ['required', 'string', 'max:500'],
             'text' => ['required', 'string', 'max:2000'],
             'image' => ['image', 'mimes:jpg,gif', 'nullable', 'dimensions:max_width=300,max_height=300'],
+            'oldImage' => ['string', 'nullable'],
+            'del-img' => ['string', 'nullable'],
         ];
     }
 }

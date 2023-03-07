@@ -8,6 +8,6 @@
     @if($news->image !== null)
         <div><img src="{{ $news->image }}" alt="Картинка новости"></div>
     @endif
-    <div>{{ $news->text }}</div>
+    <div class="news-text">{{ $news->text }}</div>
 
 @endsection

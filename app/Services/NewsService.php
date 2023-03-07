@@ -19,7 +19,7 @@ class NewsService implements NewsServiceInterface
 
     public function getAll(): Paginator
     {
-        $news = $this->news->orderByDesc('date')->simplePaginate(5);
+        $news = $this->news->orderByDesc('date')->paginate(5);
 
         if(is_null($news->lastItem())) {
             return abort(404);

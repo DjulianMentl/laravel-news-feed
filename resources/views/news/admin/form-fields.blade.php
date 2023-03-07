@@ -1,18 +1,31 @@
 
     @csrf
     <div>
-        <label for="title">Заголовок</label>
-        <p><textarea id="title" name="title" rows="2" cols="50">{{ $news->title ?? '' }}</textarea></p>
+        <label for="title" class="label-news-edit-form">Заголовок</label>
+        <p><textarea id="title" name="title" rows="1" cols="100">{{ $news->title ?? '' }}</textarea></p>
     </div>
     <div>
-        <label for="preview">Анонс новости</label>
-        <p><textarea id="preview" name="preview" rows="10" cols="50">{{ $news->preview ?? '' }}</textarea></p>
+        <label for="preview" class="label-news-edit-form">Анонс новости</label>
+        <p><textarea id="preview" name="preview" rows="4" cols="100">{{ $news->preview ?? '' }}</textarea></p>
     </div>
     <div>
-        <label for="text">Текст новости</label>
-        <p><textarea id="text" name="text" rows="20" cols="50">{{ $news->text ?? '' }}</textarea></p>
+        <label for="text" class="label-news-edit-form">Текст новости</label>
+        <p><textarea id="text" name="text" rows="8" cols="100">{{ $news->text ?? '' }}</textarea></p>
     </div>
-    <div>
-        <input type="file" accept="image/jpeg,image/gif" name="image">
-    </div>
+
+    @if(!empty($news->image))
+        <div>
+            <img src="{{ $news->image }}" alt="Картинка новости">
+            <input type="hidden" name="oldImage" value="{{ $news->image }}">
+
+            <label class="checkbox">
+                <input name="del-img" type="checkbox" value="{{ $news->image }}"> Удалить изображение
+            </label>
+        </div>
+    @else
+        <div class="add-img">
+            <label for="add-img" class="label-news-edit-form">Изображение</label>
+            <div class="btn-add-img"><input type="file" id="add-img" accept="image/jpeg,image/gif" name="image"></div>
+        </div>
+    @endif
 

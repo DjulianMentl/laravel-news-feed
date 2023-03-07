@@ -3,20 +3,19 @@
 @section('title', $title)
 
 @section('content')
-    <h1>Список новостей</h1>
-
     <div>
         @foreach($newsList as $news)
-            <a href="{{ route('news.show', ['news' => $news->id]) }}"><h3>{{ $news->date }} — {{ $news->title }}</h3></a>
-            <div>{{ $news->preview }}</div>
-            <hr>
+            <div class="news">
+                <a href="{{ route('news.show', ['news' => $news->id]) }}"><h1>{{ $news->date }} — {{ $news->title }}</h1></a>
+                <div class="news-preview">{{ $news->preview }}</div>
+            </div>
         @endforeach
 
         <div>
-            <a href="{{ route('news.create') }}">Добавить новость</a>
+            <a class="btn" href="{{ route('news.create') }}">Добавить новость</a>
         </div>
 
-        <br> {{ $newsList->links() }}
+        <div class="pagination">{{ $newsList->links('news.pagination') }}</div>
 
     </div>
 @endsection

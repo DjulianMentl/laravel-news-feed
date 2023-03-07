@@ -2,17 +2,15 @@
 
 namespace App\DTO;
 
-use App\Http\Requests\NewsRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\MessageBag;
 
 class NewsData
 {
     private string $title;
     private string $preview;
     private string $text;
-    private Carbon $data;
+    private Carbon $date;
     private ?string $image;
 
     public function __construct(array $validateRequest)
@@ -20,11 +18,21 @@ class NewsData
         $this->title = $validateRequest['title'];
         $this->text = $validateRequest['text'];
         $this->preview = $validateRequest['preview'];
-        $this->data = now();
+        $this->date = now();
 
         isset($validateRequest['image'])
             ? $this->image = substr(Storage::putFile('public/images', $validateRequest['image']), 6)
-            : $this->image = null;
+            : $this->image = $this->getOldImage($validateRequest);
+
+        if (isset($validateRequest['del-img'])) {
+            $this->image = null;
+        }
+    }
+
+
+    private function getOldImage(array $validateRequest): ?string
+    {
+        return $validateRequest['oldImage'] ?? null;
     }
 
 
@@ -48,7 +56,7 @@ class NewsData
 
     public function getDate(): Carbon
     {
-        return $this->data;
+        return $this->date;
     }
 
 
