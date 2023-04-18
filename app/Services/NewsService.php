@@ -2,11 +2,10 @@
 
 namespace App\Services;
 
-use App\DTO\NewsData;
 use App\Models\News;
+use DTO\NewsData;
 use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Date;
+use yii\db\StaleObjectException;
 
 class NewsService implements NewsServiceInterface
 {
@@ -35,6 +34,10 @@ class NewsService implements NewsServiceInterface
     }
 
 
+    /**
+     * @throws \Throwable
+     * @throws StaleObjectException
+     */
     public function delete(int $id): ?bool
     {
         return $this->news->where('id', '=', $id)->delete();
@@ -68,5 +71,4 @@ class NewsService implements NewsServiceInterface
     {
         return $this->news->select('date')->latest()->first();
     }
-
 }

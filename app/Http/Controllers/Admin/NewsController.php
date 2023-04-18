@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\DTO\NewsData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsRequest;
 use App\Services\NewsServiceInterface;
+use DTO\NewsData;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use yii\db\StaleObjectException;
 
 class NewsController extends Controller
 {
@@ -67,6 +68,10 @@ class NewsController extends Controller
     }
 
 
+    /**
+     * @throws \Throwable
+     * @throws StaleObjectException
+     */
     public function destroy(int $news): RedirectResponse
     {
         $this->news->delete($news);

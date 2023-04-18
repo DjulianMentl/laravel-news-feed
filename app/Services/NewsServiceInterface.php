@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\DTO\NewsData;
+use DTO\NewsData;
 
 interface NewsServiceInterface
 {
